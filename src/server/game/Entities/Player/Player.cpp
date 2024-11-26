@@ -8884,7 +8884,7 @@ void Player::SendBattlefieldWorldStates()
     {
         if (BattlefieldWG* wg = (BattlefieldWG*)sBattlefieldMgr->GetBattlefieldByBattleId(BATTLEFIELD_BATTLEID_WG))
         {
-            wg->SendUpdateWorldStatesTo(this);
+            wg->SendUpdateWorldStates(this);
         }
     }
 }
