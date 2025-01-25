@@ -1850,6 +1850,7 @@ public:
 
     // Emote
     void HandleEmoteCommand(uint32 emoteId);
+    void SetEmoteState(Emote emote) { SetUInt32Value(UNIT_NPC_EMOTESTATE, emote); }
 
     // Chat
     virtual void Talk(std::string_view text, ChatMsg msgType, Language language, float textRange, WorldObject const* target);

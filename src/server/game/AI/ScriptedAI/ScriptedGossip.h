@@ -84,6 +84,8 @@ class Creature;
 // Clear menu
 void ClearGossipMenuFor(Player* player);
 
+void InitGossipMenuFor(Player* player, uint32 menuId);
+
 // Using provided text, not from DB
 void AddGossipItemFor(Player* player, uint32 icon, std::string const& text, uint32 sender, uint32 action);
 
@@ -92,6 +94,8 @@ void AddGossipItemFor(Player* player, uint32 icon, std::string const& text, uint
 
 // Uses gossip item info from DB
 void AddGossipItemFor(Player* player, uint32 gossipMenuID, uint32 gossipMenuItemID, uint32 sender, uint32 action, uint32 boxMoney = 0);
+
+uint32 GetGossipActionFor(Player* player, uint32 gossipListId);
 
 // Send menu text
 void SendGossipMenuFor(Player* player, uint32 npcTextID, ObjectGuid const guid);

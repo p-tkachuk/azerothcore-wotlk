@@ -24,6 +24,11 @@ void ClearGossipMenuFor(Player* player)
     player->PlayerTalkClass->ClearMenus();
 }
 
+void InitGossipMenuFor(Player* player, uint32 menuId)
+{
+    player->PlayerTalkClass->GetGossipMenu().SetMenuId(menuId);
+}
+
 // Using provided text, not from DB
 void AddGossipItemFor(Player* player, uint32 icon, std::string const& text, uint32 sender, uint32 action)
 {
@@ -40,6 +45,11 @@ void AddGossipItemFor(Player* player, uint32 icon, std::string const& text, uint
 void AddGossipItemFor(Player* player, uint32 gossipMenuID, uint32 gossipMenuItemID, uint32 sender, uint32 action, uint32 boxMoney /*= 0*/)
 {
     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(gossipMenuID, gossipMenuItemID, sender, action, boxMoney);
+}
+
+uint32 GetGossipActionFor(Player* player, uint32 gossipListId)
+{
+    return player->PlayerTalkClass->GetGossipOptionAction(gossipListId);
 }
 
 void SendGossipMenuFor(Player* player, uint32 npcTextID, ObjectGuid const guid)

@@ -59,6 +59,7 @@ public:
     void UpdateAI(uint32) override {}
     void EnterEvadeMode(EvadeReason /*why*/) override {}
     void OnCharmed(bool /*apply*/) override {}
+    void JustRespawned() override { }
 
     static int32 Permissible(Creature const* creature);
 };

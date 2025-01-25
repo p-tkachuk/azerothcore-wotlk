@@ -292,7 +292,7 @@ Creature::Creature(bool isWorldObject): Unit(isWorldObject), MovableMapObject(),
     m_CombatDistance = 0.0f;
 
     ResetLootMode(); // restore default loot mode
-    TriggerJustRespawned = false;
+    TriggerJustRespawned = true;
     m_isTempWorldObject = false;
     _focusSpell = nullptr;
 
@@ -658,12 +658,13 @@ bool Creature::UpdateEntry(uint32 Entry, const CreatureData* data, bool changele
 
 void Creature::Update(uint32 diff)
 {
-    if (IsAIEnabled && TriggerJustRespawned)
+    if (IsAIEnabled && TriggerJustRespawned && m_deathState != DeathState::Dead)
     {
-        TriggerJustRespawned = false;
-        AI()->JustRespawned();
         if (m_vehicleKit)
             m_vehicleKit->Reset();
+
+        TriggerJustRespawned = false;
+        AI()->JustRespawned();
     }
 
     switch (m_deathState)

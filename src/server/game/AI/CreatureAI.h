@@ -151,7 +151,7 @@ public:
     virtual bool IsEscorted() { return false; }
 
     // Called when creature is spawned or respawned (for reseting variables)
-    virtual void JustRespawned() { Reset(); }
+    virtual void JustRespawned() { }
 
     // Called at waypoint reached or point movement finished
     virtual void MovementInform(uint32 /*type*/, uint32 /*id*/) {}
