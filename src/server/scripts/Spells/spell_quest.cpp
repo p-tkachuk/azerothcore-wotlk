@@ -92,69 +92,6 @@ class spell_q11065_wrangle_some_aether_rays_aura : public AuraScript
     }
 };
 
-enum eDrakuru
-{
-    QUEST_SUBJECT_TO_INTERPRETATION         = 11991,
-    QUEST_MY_HEART_IS_IN_YOUR_HANDS         = 12802,
-
-    NPC_DRAKURU                             = 28016,
-};
-
-class spell_image_of_drakuru_reagent_check : public SpellScript
-{
-    PrepareSpellScript(spell_image_of_drakuru_reagent_check);
-
-    void HandleDummyEffect(SpellEffIndex /*effIndex*/)
-    {
-        Unit* caster = GetCaster();
-        if (!caster || !caster->ToPlayer())
-            return;
-        Player* player = caster->ToPlayer();
-
-        float dist = player->GetDistance(3385, -1807, 114);
-        if (dist < 40.0f)
-        {
-            caster->ToPlayer()->GroupEventHappens(QUEST_SUBJECT_TO_INTERPRETATION, caster);
-            caster->CastSpell(caster, 47118, false);
-            return;
-        }
-
-        dist = player->GetDistance(4244, -2025, 238);
-        if (dist < 40.0f)
-        {
-            caster->CastSpell(caster, 47150, false);
-            return;
-        }
-
-        dist = player->GetDistance(4524, -3472, 228);
-        if (dist < 40.0f)
-        {
-            caster->ToPlayer()->GroupEventHappens(QUEST_MY_HEART_IS_IN_YOUR_HANDS, caster);
-            caster->CastSpell(caster, 47317, false);
-            return;
-        }
-
-        dist = player->GetDistance(4599, -4877, 48);
-        if (dist < 40.0f)
-        {
-            caster->CastSpell(caster, 47406, false);
-            return;
-        }
-
-        dist = player->GetDistance(-236, -614, 116);
-        if (dist < 40.0f)
-        {
-            caster->CastSpell(caster, 50440, false);
-            return;
-        }
-    }
-
-    void Register() override
-    {
-        OnEffectHitTarget += SpellEffectFn(spell_image_of_drakuru_reagent_check::HandleDummyEffect, EFFECT_0, SPELL_EFFECT_DUMMY);
-    }
-};
-
 class spell_q12014_steady_as_a_rock : public SpellScript
 {
     PrepareSpellScript(spell_q12014_steady_as_a_rock);
@@ -2459,7 +2396,6 @@ class spell_q9847_a_spirit_ally : public SpellScript
 void AddSC_quest_spell_scripts()
 {
     RegisterSpellAndAuraScriptPair(spell_q11065_wrangle_some_aether_rays, spell_q11065_wrangle_some_aether_rays_aura);
-    RegisterSpellScript(spell_image_of_drakuru_reagent_check);
     RegisterSpellScript(spell_q12014_steady_as_a_rock);
     RegisterSpellAndAuraScriptPair(spell_q11026_a11051_banish_the_demons, spell_q11026_a11051_banish_the_demons_aura);
     RegisterSpellScript(spell_q10525_vision_guide);
